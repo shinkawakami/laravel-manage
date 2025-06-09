@@ -1,0 +1,47 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: manage-app
+    working_dir: /var/www
+    volumes:
+      - ./src:/var/www
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+      - mailhog
+
+  db:
+    image: mysql:8.0
+    container_name: manage-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: manage-phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+    ports:
+      - "8080:80"
+
+  mailhog:
+    image: mailhog/mailhog
+    container_name: manage-mailhog
+    ports:
+      - "8025:8025"
+
+volumes:
+  db-data:
