@@ -1,4 +1,4 @@
-name: Laravel CI
+name: Laravel
 
 on:
   push:
@@ -7,7 +7,8 @@ on:
     branches: [ "master" ]
 
 jobs:
-  test:
+  laravel-tests:
+
     runs-on: ubuntu-latest
 
     services:
@@ -20,25 +21,25 @@ jobs:
           - 3306:3306
 
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-    
-      - name: Copy .env
-          run: php -r "file_exists('.env') || copy('.env.example', '.env');"
-          working-directory: src
-
-      - name: Install Composer dependencies
-        run: composer install
-        working-directory: src
-
-      - name: Generate app key
-        run: php artisan key:generate
-        working-directory: src
-      
-      - name: Run Laravel tests
-        run: php artisan test
-        working-directory: src
+    - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
+      with:
+        php-version: '8.2'
+    - uses: actions/checkout@v4
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      working-directory: src
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      working-directory: src
+    - name: Generate key
+      run: php artisan key:generate
+      working-directory: src
+    - name: Directory Permissions
+      run: chmod -R 777 storage bootstrap/cache
+      working-directory: src
+    - name: Execute tests (Unit and Feature tests) via PHPUnit/Pest
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database/database.sqlite
+      working-directory: src
+      run: php artisan test
