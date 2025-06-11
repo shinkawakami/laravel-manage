@@ -10,6 +10,15 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: laravel_test
+        ports:
+          - 3306:3306
+
     steps:
       - uses: actions/checkout@v3
 
@@ -17,9 +26,19 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
+    
+      - name: Copy .env
+          run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+          working-directory: src
 
-      - name: Install dependencies
-        run: composer install --no-progress --prefer-dist
+      - name: Install Composer dependencies
+        run: composer install
+        working-directory: src
 
-      - name: Run tests
+      - name: Generate app key
+        run: php artisan key:generate
+        working-directory: src
+      
+      - name: Run Laravel tests
         run: php artisan test
+        working-directory: src
