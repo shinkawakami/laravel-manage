@@ -9,5 +9,6 @@ class FailFeatureTest extends TestCase
     public function test_always_fails()
     {
         $this->assertTrue(false);
+        
     }
 }
