@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>予定管理アプリ</title>
 </head>
 <body>
@@ -18,5 +19,7 @@
     <hr>
 
     @yield('content')
+
+    @stack('scripts')
 </body>
 </html>

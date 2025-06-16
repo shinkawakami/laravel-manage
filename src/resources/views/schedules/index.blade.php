@@ -4,6 +4,7 @@
     <h1>予定一覧</h1>
 
     <a href="{{ route('schedules.create') }}">＋ 新規作成</a>
+    <a href="{{ route('calendar') }}">カレンダー</a>
 
     <ul>
         @foreach ($schedules as $schedule)

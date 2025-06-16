@@ -19,6 +19,5 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # DocumentRootをLaravelに合わせる
 WORKDIR /var/www
 
-ENV APACHE_DOCUMENT_ROOT=/var/www/public
-
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/000-default.conf
+RUN sed -ri -e 's!/var/www/html!/var/www/public!g' /etc/apache2/sites-available/000-default.conf
+RUN sed -i 's/AllowOverride None/AllowOverride All/g' /etc/apache2/apache2.conf
