@@ -43,6 +43,14 @@ class ScheduleController extends Controller
     {
         $schedule->update($request->only('title', 'description', 'start_time', 'end_time'));
 
+        // APIリクエストならJSONを返す
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'schedule' => $schedule,
+            ]);
+        }
+        // 通常Webフォームからのリクエストならリダイレクト
         return redirect()->route('schedules.index');
     }
 
