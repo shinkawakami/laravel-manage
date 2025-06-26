@@ -14,6 +14,7 @@
     <form method="POST" action="{{ route('schedules.update', $schedule) }}">
         @csrf
         @method('PUT')
+        
 
         <label>タイトル:</label><br>
         <input type="text" name="title" value="{{ old('title', $schedule->title) }}"><br><br>
