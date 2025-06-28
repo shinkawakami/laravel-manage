@@ -11,7 +11,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true; // 認証不要のため true
+        return true; // 誰でも許可（許可チェックなし）
     }
 
     /**
