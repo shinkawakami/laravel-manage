@@ -61,4 +61,10 @@ class ScheduleController extends Controller
 
         return redirect()->route('schedules.index');
     }
+
+    public function show(Schedule $schedule)
+    {
+        $schedule->load('tasks');
+        return view('schedules.show', compact('schedule'));
+    }
 }
