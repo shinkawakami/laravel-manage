@@ -16,4 +16,9 @@ class Schedule extends Model
         return $this->belongsTo(User::class);
         // 明示的：return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }
