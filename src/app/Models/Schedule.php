@@ -8,7 +8,7 @@ class Schedule extends Model
 {
     // 代入可能（変更可能）
     protected $fillable = [
-        'user_id', 'title', 'description', 'start_time', 'end_time',
+        'user_id', 'title', 'description', 'start_date', 'end_date',
     ];
 
     public function user()

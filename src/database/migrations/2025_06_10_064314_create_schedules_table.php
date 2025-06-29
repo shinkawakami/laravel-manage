@@ -17,8 +17,8 @@ return new class extends Migration
             // 安全な書き方：$table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->datetime('start_time');
-            $table->datetime('end_time');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ function renderCalendar(date, events = []) {
         td.innerHTML = `<strong>${day}</strong>`;
 
         const eventsForDay = events.filter(ev => {
-            return new Date(ev.start_time).toDateString() === cellDate.toDateString();
+            return new Date(ev.start_date).toDateString() === cellDate.toDateString();
         });
 
         eventsForDay.forEach(ev => {
@@ -46,8 +46,8 @@ function openModal(eventData) {
     document.getElementById('edit-id').value = eventData.id;
     document.getElementById('edit-title').value = eventData.title;
     document.getElementById('edit-description').value = eventData.description;
-    document.getElementById('edit-start').value = eventData.start_time;
-    document.getElementById('edit-end').value = eventData.end_time;
+    document.getElementById('edit-start').value = eventData.start_date;
+    document.getElementById('edit-end').value = eventData.end_date;
     document.getElementById('editModal').style.display = 'block';
     document.getElementById('modalBackdrop').style.display = 'block';
 }
@@ -73,8 +73,8 @@ document.getElementById('editForm').addEventListener('submit', function (e) {
     const updatedData = {
         title: document.getElementById('edit-title').value,
         description: document.getElementById('edit-description').value,
-        start_time: document.getElementById('edit-start').value,
-        end_time: document.getElementById('edit-end').value,
+        start_date: document.getElementById('edit-start').value,
+        end_date: document.getElementById('edit-end').value,
     };
 
     fetch(`/api/schedules/${id}`, {

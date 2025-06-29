@@ -23,8 +23,9 @@ class ScheduleRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'start_time' => 'required|date',
-            'end_time' => 'required|date|after_or_equal:start_time',
+            'description' => 'nullable',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
         ];
     }
 
@@ -32,11 +33,11 @@ class ScheduleRequest extends FormRequest
     {
         return [
             'title' => 'タイトルは必須です。',
-            'start_time.required' => '開始日時は必須です',
-            'start_time.date' => '開始日時は日時を入力してください。',
-            'end_time.required' => '終了日時は必須です',
-            'end_time.date' => '終了日時を日時を入力してください。',
-            'end_time.after_or_equal' => '終了日時は開始日時より後を入力してください。'
+            'start_date.required' => '開始日時は必須です',
+            'start_date.date' => '開始日時は日時を入力してください。',
+            'end_date.required' => '終了日時は必須です',
+            'end_date.date' => '終了日時を日時を入力してください。',
+            'end_date.after_or_equal' => '終了日時は開始日時より後を入力してください。'
         ];
     }
 }

@@ -11,7 +11,11 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        $schedules = Schedule::where('user_id', Auth::id())->orderBy('start_time')->get();
+        // $schedules = Schedule::with(['tasks' => function($q) {
+        //     $q->where('')
+        // }])
+        // where('user_id', Auth::id())->orderBy('start_date')->get();
+        $schedules = Schedule::where('user_id', Auth::id())->orderBy('start_date')->get();
         return view('schedules.index', compact('schedules'));
     }
 
@@ -26,8 +30,8 @@ class ScheduleController extends Controller
             'user_id' => Auth::id(),
             'title' => $request->title,
             'description' => $request->description,
-            'start_time' => $request->start_time,
-            'end_time' => $request->end_time,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
         ]);
 
         return redirect()->route('schedules.index');
@@ -41,7 +45,7 @@ class ScheduleController extends Controller
 
     public function update(ScheduleRequest $request, Schedule $schedule)
     {
-        $schedule->update($request->only('title', 'description', 'start_time', 'end_time'));
+        $schedule->update($request->validated());
 
         // APIリクエストならJSONを返す
         if ($request->wantsJson()) {

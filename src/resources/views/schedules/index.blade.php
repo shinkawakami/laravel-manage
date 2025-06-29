@@ -10,7 +10,7 @@
         @foreach ($schedules as $schedule)
             <li>
                 <a href="{{ route('schedules.show', $schedule->id) }}"><strong>{{ $schedule->title }}</strong></a><br>
-                {{ $schedule->start_time }} 〜 {{ $schedule->end_time }}<br>
+                {{ $schedule->start_date }} 〜 {{ $schedule->end_date }}<br>
                 {{ $schedule->description }}
 
                 <div style="margin-top: 5px;">

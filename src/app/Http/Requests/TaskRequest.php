@@ -19,7 +19,7 @@ class TaskRequest extends FormRequest
             'description' => 'nullable|string',
             'due_date' => 'nullable|date',
             'priority' => 'nullable|integer|between:1,5',
-            'status' => 'nullable|in:未着手,作業中,待機,完了',
+            'status_code' => 'required|integer|between:1,4',
         ];
     }
 
@@ -34,8 +34,8 @@ class TaskRequest extends FormRequest
             'due_date.date' => '締切日は有効な日付形式で入力してください。',
             'priority.integer' => '優先度は整数で指定してください。',
             'priority.between' => '優先度は1~5の班にで指定してください。',
-            'status.required' => 'ステータスは必須です。',
-            'status.in' => 'ステータスは「未着手」「作業中」「待機」「完了」のいずれかを指定してください。',
+            'status_code.required' => 'ステータスは必須です。',
+            'status_code.*' => 'ステータスは「未着手」「作業中」「待機」「完了」のいずれかを指定してください。',
         ];
     }
 }

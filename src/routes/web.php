@@ -29,4 +29,5 @@ Route::middleware('auth')->group(function () {
     Route::get('schedules/{schedule_id}/tasks/{task}', [TaskController::class, 'edit'])->name('tasks.edit');
     Route::put('schedules/{schedule_id}/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
     Route::delete('schedules/{schedule_id}/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+    // Route::get('tasks', [TaskController::class, 'index'])->name('tasks.index');
 });

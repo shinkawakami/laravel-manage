@@ -16,10 +16,11 @@
     <form method="POST" action="{{ route('tasks.store', $schedule_id) }}">
         @csrf
         <input type="hidden" name="schedule_id" value="{{ $schedule_id }}">
+        <input type="hidden" name="status_code" value="{{ \App\Models\Task::STATUS_UNSTARTED }}">
         <label>タイトル:</label><br>
         <input type="text" name="title" value="{{ old('title') }}"><br><br>
         <label>説明:</label><br>
-        <input type="description" name="description" value="{{ old('description') }}"><br><br>
+        <textarea name="description">{{ old('description') }}</textarea><br><br>
         <label>期日:</label><br>
         <input type="date" name="due_date" value="{{ old('due_date') }}"><br><br>
         <label>優先順位:</label><br>
