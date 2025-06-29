@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignId('schedule_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('description')->nullable();
-            $table->timestamp('due_date')->nullable();
+            $table->date('due_date')->nullable();
             $table->unsignedTinyInteger('priority')->nullable();
-            $table->enum('status', ['未着手', '作業中', '待機', '完了'])->default('未着手');
+            $table->unsignedTinyInteger('status_code')->default(1);
             $table->timestamps();
         });
     }

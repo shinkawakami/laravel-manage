@@ -18,7 +18,7 @@
         <label>タイトル:</label><br>
         <input type="text" name="title" value="{{ old('title', $task->title) }}"><br><br>
         <label>説明:</label><br>
-        <input type="description" name="description" value="{{ old('description', $task->description) }}"><br><br>
+        <textarea name="description">{{ old('description', $task->description) }}</textarea><br><br>
         <label>期日:</label><br>
         <input type="date" name="due_date" value="{{ \Carbon\Carbon::parse($task->due_date)->format('Y-m-d\TH:i') }}"><br><br>
         <label>優先順位:</label><br>
@@ -29,11 +29,12 @@
             @endforeach
         </select><br><br>
         <label>ステータス:</label><br>
-        <select name="status">
-            <option value="未着手" @selected(old('status', $task->status) == '未着手')>未着手</option>
-            <option value="作業中" @selected(old('status', $task->status) == '作業中')>作業中</option>
-            <option value="待機" @selected(old('status', $task->status) == '待機')>待機</option>
-            <option value="完了" @selected(old('status', $task->status) == '完了')>完了</option>
+        <select name="status_code">
+            @foreach (\App\Models\Task::STATUS_LABELS as $code => $label)
+                <option value="{{ $code }}" {{ old('status_code', $task->status_code ?? 1) == $code ? 'selected' : '' }}>
+                    {{ $label }}
+                </option>
+            @endforeach
         </select><br><br>
         <button type="submit">保存</button>
     </form>

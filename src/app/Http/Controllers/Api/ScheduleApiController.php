@@ -21,8 +21,8 @@ class ScheduleApiController extends Controller
         $end = $start->copy()->endOfMonth();
 
         return Schedule::where('user_id', $userId)
-            ->whereBetween('start_time', [$start, $end])
-            ->select(['id', 'title', 'description', 'start_time', 'end_time'])
+            ->whereBetween('start_date', [$start, $end])
+            ->select(['id', 'title', 'description', 'start_date', 'end_date'])
             ->get();
     }
 }

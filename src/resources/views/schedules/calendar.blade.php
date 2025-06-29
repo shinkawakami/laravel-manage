@@ -30,15 +30,15 @@
         </div>
         <div>
             <label>詳細:</label>
-            <input type="text" id="edit-description" name="description">
+            <textarea id="edit-description" name="description"></textarea>
         </div>
         <div>
             <label>開始日:</label>
-            <input type="datetime-local" id="edit-start" name="start">
+            <input type="date" id="edit-start" name="start">
         </div>
         <div>
             <label>終了日:</label>
-            <input type="datetime-local" id="edit-end" name="end">
+            <input type="date" id="edit-end" name="end">
         </div>
         <button type="submit">保存</button>
         <button type="button" onclick="closeModal()">キャンセル</button>

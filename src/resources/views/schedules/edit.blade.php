@@ -22,10 +22,10 @@
         <textarea name="description">{{ old('description', $schedule->description) }}</textarea><br><br>
 
         <label>開始日時:</label><br>
-        <input type="datetime-local" name="start_time" value="{{ \Carbon\Carbon::parse($schedule->start_time)->format('Y-m-d\TH:i') }}"><br><br>
+        <input type="date" name="start_date" value="{{ \Carbon\Carbon::parse($schedule->start_date)->format('Y-m-d\TH:i') }}"><br><br>
 
         <label>終了日時:</label><br>
-        <input type="datetime-local" name="end_time" value="{{ \Carbon\Carbon::parse($schedule->end_time)->format('Y-m-d\TH:i') }}"><br><br>
+        <input type="date" name="end_date" value="{{ \Carbon\Carbon::parse($schedule->end_date)->format('Y-m-d\TH:i') }}"><br><br>
 
         <button type="submit">更新</button>
     </form>
