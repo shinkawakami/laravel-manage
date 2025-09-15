@@ -7,12 +7,9 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     */
     // public function register(): void
     // {
-    //     //
+    //
     // }
 
     /**
@@ -23,12 +20,14 @@ class RouteServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->routes(function () {
-            Route::middleware('api')
-                ->prefix('api')
-                ->group(base_path('routes/api.php'));
+            Route::middleware('web')->group(base_path('routes/web.php'));
+            Route::middleware('web')->group(base_path('routes/auth.php'));
+            // Route::middleware(['web', 'auth', 'can:admin'])
+            //     ->prefix('admin')
+            //     ->group(base_path('routes/admin.php'));
 
-            Route::middleware('web')
-                ->group(base_path('routes/web.php'));
+            Route::middleware('api')->prefix('api')->name('api.')
+                ->group(base_path('routes/api.php'));
         });
     }
 }
