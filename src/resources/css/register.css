@@ -1,0 +1,76 @@
+main {
+  min-height: 100vh;          /* 全画面の高さ */
+  display: flex;              /* Flexbox を有効化 */
+  flex-direction: column;     /* 子要素を縦に積む */
+  align-items: center;        /* 横方向の中央寄せ */
+  justify-content: center;    /* 縦方向の中央寄せ */
+}
+
+form {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  padding: 2rem;
+  border: 1px solid #e5e7eb;
+  border-radius: .5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+label {
+  display: block;
+  margin-bottom: .25rem;
+  font-weight: 600;
+}
+
+.form-button {
+  display: inline-block;
+  width: 100%;
+  padding: .75rem;
+  margin-top: .5rem;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: .375rem;
+  cursor: pointer;
+  transition: background .2s;
+  font-size: 1.125rem;
+  line-height: 1;  
+}
+
+.form-button:hover {
+  background: #1d4ed8;
+}
+
+.form-button[disabled] {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper input {
+  width: 100%;
+  padding-right: 3rem;
+  box-sizing: border-box;
+}
+
+.toggle-btn {
+  position: absolute;
+  right: .5rem;
+  top: calc(50% - .5rem);
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6b7280;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: .375rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

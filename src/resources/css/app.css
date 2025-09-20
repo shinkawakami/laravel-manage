@@ -1,11 +1,57 @@
-@import 'tailwindcss';
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+  background: #f9fafb;
+  color: #111827;
+  line-height: 1.5;
+}
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3 {
+  margin: 0 0 1rem;
+}
+
+input {
+  width: 100%;
+  padding: .5rem .75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #dbd1d1;
+  border-radius: .375rem;
+  font-size: 1rem;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,.2);
+}
+
+input[aria-invalid="true"] {
+  border-color: #dc2626;
+}
+
+input[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px rgba(220,38,38,.2);
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: .875rem;
+  margin-top: -.75rem;
+  margin-bottom: 1rem;
 }
