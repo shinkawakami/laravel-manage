@@ -25,42 +25,11 @@ h1, h2, h3 {
   margin: 0 0 1rem;
 }
 
-.container {
-  width: 100%;
-  max-width: 640px;   /* スマホ〜小型PCにちょうどよい幅 */
-  margin: 0 auto;
-  padding: 1rem;
-}
-
-main {
-  min-height: 100vh;       /* 全画面の高さ */
-  display: flex;
-  align-items: center;     /* 縦中央 */
-  justify-content: center; /* 横中央 */
-}
-
-form {
-  width: 100%;
-  background: #fff;
-  padding: 2rem;
-  border: 1px solid #e5e7eb;
-  border-radius: .5rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-label {
-  display: block;
-  margin-bottom: .25rem;
-  font-weight: 600;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+input {
   width: 100%;
   padding: .5rem .75rem;
   margin-bottom: 1rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid #dbd1d1;
   border-radius: .375rem;
   font-size: 1rem;
   transition: border-color .2s, box-shadow .2s;
@@ -76,26 +45,8 @@ input[aria-invalid="true"] {
   border-color: #dc2626;
 }
 
-button {
-  display: inline-block;
-  width: 100%;
-  padding: .75rem;
-  background: #2563eb;
-  color: #fff;
-  font-weight: 600;
-  border: none;
-  border-radius: .375rem;
-  cursor: pointer;
-  transition: background .2s;
-}
-
-button:hover {
-  background: #1d4ed8;
-}
-
-button[disabled] {
-  opacity: .6;
-  cursor: not-allowed;
+input[aria-invalid="true"]:focus {
+  box-shadow: 0 0 0 3px rgba(220,38,38,.2);
 }
 
 .error-message {
@@ -103,14 +54,4 @@ button[disabled] {
   font-size: .875rem;
   margin-top: -.75rem;
   margin-bottom: 1rem;
-}
-
-ul.error-list {
-  margin: 1rem 0;
-  padding: .75rem;
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  border-radius: .375rem;
-  color: #991b1b;
-  font-size: .875rem;
 }
